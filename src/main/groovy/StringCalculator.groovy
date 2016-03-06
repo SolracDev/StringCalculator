@@ -1,6 +1,9 @@
 class StringCalculator {
 
     int add(String number){
-        0
+        if(!number)
+            return 0
+
+        1
     }
 }
