@@ -6,7 +6,7 @@ class StringCalculator {
     }
 
     private int sum(String input) {
-        Arrays.stream(input.split(","))
+        Arrays.stream(input.split("\\D+"))
             .mapToInt({ Integer.parseInt(it) })
             .sum()
     }

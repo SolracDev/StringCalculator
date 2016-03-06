@@ -1,4 +1,3 @@
-import spock.lang.Ignore
 import spock.lang.Specification
 
 class StringCalculatorTest extends Specification {
@@ -51,7 +50,7 @@ class StringCalculatorTest extends Specification {
         "23,45 " || 68
     }
 
-    def "Should return the sum of an unknown amount of numbers"() {
+    def "Should return the sum of an unknown amount of comma separated numbers"() {
 
         when:
         int result = stringCalculator.add(input)
@@ -64,6 +63,22 @@ class StringCalculatorTest extends Specification {
         "0,0,0"       || 0
         "1,2,3"       || 6
         "100,102,103" || 305
+
+    }
+
+    def "Should return the sum of an unknown amount of new line separated numbers"() {
+
+        when:
+        int result = stringCalculator.add(input)
+
+        then:
+        result == expectedResult
+
+        where:
+        input         || expectedResult
+        "1\n2,3"      || 6
+        "1\n2,\n3\n1" || 7
+        "1\n1\n2"     || 4
 
     }
 
