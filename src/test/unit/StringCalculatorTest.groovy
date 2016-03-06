@@ -35,5 +35,22 @@ class StringCalculatorTest extends Specification {
 
     }
 
+    def "Should return sum of two numbers"() {
+        when:
+        int result = stringCalculator.add(input)
+
+        then:
+        result == expectedResult
+
+        where:
+        input    || expectedResult
+        "0,0"    || 0
+        "1,2"    || 3
+        "3,4"    || 7
+        "23,45 " || 68
+    }
+
+
+
 
 }
