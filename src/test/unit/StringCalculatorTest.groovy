@@ -1,3 +1,4 @@
+import spock.lang.Ignore
 import spock.lang.Specification
 
 class StringCalculatorTest extends Specification {
@@ -50,7 +51,21 @@ class StringCalculatorTest extends Specification {
         "23,45 " || 68
     }
 
+    def "Should return the sum of an unknown amount of numbers"() {
 
+        when:
+        int result = stringCalculator.add(input)
+
+        then:
+        result == expectedResult
+
+        where:
+        input         || expectedResult
+        "0,0,0"       || 0
+        "1,2,3"       || 6
+        "100,102,103" || 305
+
+    }
 
 
 }
