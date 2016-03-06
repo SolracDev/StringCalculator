@@ -1,14 +1,14 @@
 import spock.lang.Specification
 
-class StringCalculatorTest extends Specification{
+class StringCalculatorTest extends Specification {
 
     private StringCalculator stringCalculator
 
-    def setup(){
+    def setup() {
         stringCalculator = new StringCalculator()
     }
 
-    def "Should return 0 when adding empty String"(){
+    def "Should return 0 when adding empty String"() {
 
         when:
         int result = stringCalculator.add("")
@@ -18,13 +18,19 @@ class StringCalculatorTest extends Specification{
         result == 0
     }
 
-    def "should return that number if one number passed"(){
+    def "should return that number if one number passed"() {
 
         when:
-        int result = stringCalculator.add("1")
+        int result = stringCalculator.add(inputWithOneNumber)
 
         then:
-        result == 1
+        result == expectedResult
+
+        where:
+        inputWithOneNumber || expectedResult
+        "0"                || 0
+        "1"                || 1
+        "10"               || 10
 
 
     }
